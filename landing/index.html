@@ -1,637 +1,946 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ====== SEO ====== -->
-  <title>Onepage HTML Report — AI Agent สร้างรายงาน Chart.js แบบ 1 หน้า สวย กระชับ</title>
-  <meta name="description" content="Onepage HTML Report คือ skill สำหรับ AI coding agent สร้างรายงาน HTML แบบ 1 หน้า พร้อมกราฟ Chart.js รองรับ Dark/Light theme กระชับแบบ Caveman-style ติดตั้งฟรีผ่าน npx skills add">
-  <meta name="keywords" content="AI agent skill, HTML report, Chart.js, one-page report, dashboard generator, AI coding agent, micro-saas, npx skills, Zed, Claude Code, Cursor">
-  <meta name="author" content="Pratchaya0">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-  <link rel="canonical" href="https://one-page-report.vercel.app">
+        <!-- ====== SEO ====== -->
+        <title>
+            Onepage HTML Report — AI Agent สร้างรายงาน Chart.js แบบ 1 หน้า สวย
+            กระชับ
+        </title>
+        <meta
+            name="description"
+            content="Onepage HTML Report คือ skill สำหรับ AI coding agent สร้างรายงาน HTML แบบ 1 หน้า พร้อมกราฟ Chart.js รองรับ Dark/Light theme กระชับแบบ Caveman-style ติดตั้งฟรีผ่าน npx skills add"
+        />
+        <meta
+            name="keywords"
+            content="AI agent skill, HTML report, Chart.js, one-page report, dashboard generator, AI coding agent, micro-saas, npx skills, Zed, Claude Code, Cursor"
+        />
+        <meta name="author" content="Pratchaya0" />
+        <meta
+            name="robots"
+            content="index, follow, max-snippet:-1, max-image-preview:large"
+        />
+        <link rel="canonical" href="https://one-page-report.vercel.app" />
 
-  <!-- ====== Open Graph ====== -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Onepage HTML Report — AI Agent สร้างรายงานสวยๆ ใน 1 หน้า">
-  <meta property="og:description" content="Skill สำหรับ AI coding agent สร้างรายงาน HTML แบบ Chart-first พร้อม Dark/Light theme กระชับ ไม่มีฟิลเลอร์ ติดตั้งฟรี">
-  <meta property="og:url" content="https://one-page-report.vercel.app">
-  <meta property="og:site_name" content="Onepage HTML Report">
-  <meta property="og:locale" content="th_TH">
-  <meta property="og:image" content="https://one-page-report.vercel.app/og-image.png">
+        <!-- ====== Open Graph ====== -->
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content="Onepage HTML Report — AI Agent สร้างรายงานสวยๆ ใน 1 หน้า"
+        />
+        <meta
+            property="og:description"
+            content="Skill สำหรับ AI coding agent สร้างรายงาน HTML แบบ Chart-first พร้อม Dark/Light theme กระชับ ไม่มีฟิลเลอร์ ติดตั้งฟรี"
+        />
+        <meta property="og:url" content="https://one-page-report.vercel.app" />
+        <meta property="og:site_name" content="Onepage HTML Report" />
+        <meta property="og:locale" content="th_TH" />
+        <meta
+            property="og:image"
+            content="https://one-page-report.vercel.app/og-image.png"
+        />
 
-  <!-- ====== Twitter Card ====== -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Onepage HTML Report — AI Agent Report Generator">
-  <meta name="twitter:description" content="Chart-first HTML reports for AI coding agents. Dark/Light theme. Zero filler. Free install.">
-  <meta name="twitter:image" content="https://one-page-report.vercel.app/og-image.png">
+        <!-- ====== Twitter Card ====== -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Onepage HTML Report — AI Agent Report Generator"
+        />
+        <meta
+            name="twitter:description"
+            content="Chart-first HTML reports for AI coding agents. Dark/Light theme. Zero filler. Free install."
+        />
+        <meta
+            name="twitter:image"
+            content="https://one-page-report.vercel.app/og-image.png"
+        />
 
-  <!-- ====== AEO: FAQ Structured Data ====== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Onepage HTML Report คืออะไร",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "คือ skill สำหรับ AI coding agent (Claude Code, Cursor, Zed, Codex) ที่ช่วยสร้างรายงาน HTML แบบ 1 หน้า พร้อมกราฟ Chart.js, รองรับ Dark/Light theme, พิมพ์ได้ และกระชับไม่มีข้อความฟุ่มเฟือย"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "ติดตั้ง Onepage HTML Report อย่างไร",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ใช้คำสั่ง npx skills add Pratchaya0/one-page-report หรือระบุ agent ที่ต้องการเช่น npx skills add Pratchaya0/one-page-report -a claude สำหรับ Claude Code"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "รองรับกราฟประเภทไหนบ้าง",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "รองรับ Chart.js ทุกประเภท: Line (แนวโน้ม), Bar (เปรียบเทียบ), Doughnut (สัดส่วน), Scatter (ความสัมพันธ์), Multi-dataset (ซ้อนทับ), และ Sparkline (inline mini chart)"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Onepage HTML Report ราคาเท่าไหร่",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ฟรี 100% แบบ MIT License. ไม่มีค่าใช้จ่ายแอบแฝง ไม่ต้องสมัครสมาชิก ติดตั้งแล้วใช้ได้ทันที"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "AI agent ตัวไหนที่รองรับ",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "รองรับ Claude Code, Cursor, Windsurf, Cline, Zed, Codex, Copilot, Gemini CLI และ agent อีก 30+ ตัวที่รองรับ npx skills add"
-        }
-      }
-    ]
-  }
-  </script>
+        <!-- ====== AEO: FAQ Structured Data ====== -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Onepage HTML Report คืออะไร",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "คือ skill สำหรับ AI coding agent (Claude Code, Cursor, Zed, Codex) ที่ช่วยสร้างรายงาน HTML แบบ 1 หน้า พร้อมกราฟ Chart.js, รองรับ Dark/Light theme, พิมพ์ได้ และกระชับไม่มีข้อความฟุ่มเฟือย"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "ติดตั้ง Onepage HTML Report อย่างไร",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "ใช้คำสั่ง npx skills add Pratchaya0/one-page-report หรือระบุ agent ที่ต้องการเช่น npx skills add Pratchaya0/one-page-report -a claude สำหรับ Claude Code"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "รองรับกราฟประเภทไหนบ้าง",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "รองรับ Chart.js ทุกประเภท: Line (แนวโน้ม), Bar (เปรียบเทียบ), Doughnut (สัดส่วน), Scatter (ความสัมพันธ์), Multi-dataset (ซ้อนทับ), และ Sparkline (inline mini chart)"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Onepage HTML Report ราคาเท่าไหร่",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "ฟรี 100% แบบ MIT License. ไม่มีค่าใช้จ่ายแอบแฝง ไม่ต้องสมัครสมาชิก ติดตั้งแล้วใช้ได้ทันที"
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "AI agent ตัวไหนที่รองรับ",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "รองรับ Claude Code, Cursor, Windsurf, Cline, Zed, Codex, Copilot, Gemini CLI และ agent อีก 30+ ตัวที่รองรับ npx skills add"
+                        }
+                    }
+                ]
+            }
+        </script>
 
-  <!-- ====== GEO: Software Application Schema ====== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Onepage HTML Report",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Any",
-    "description": "AI agent skill for generating one-page HTML reports with Chart.js charts, dark/light theming, and caveman-style brevity.",
-    "url": "https://one-page-report.vercel.app",
-    "author": {
-      "@type": "Person",
-      "name": "Pratchaya0"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "browserRequirements": "Requires HTML5 browser with JavaScript",
-    "softwareVersion": "1.0",
-    "datePublished": "2026-07-05"
-  }
-  </script>
+        <!-- ====== GEO: Software Application Schema ====== -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Onepage HTML Report",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Any",
+                "description": "AI agent skill for generating one-page HTML reports with Chart.js charts, dark/light theming, and caveman-style brevity.",
+                "url": "https://one-page-report.vercel.app",
+                "author": {
+                    "@type": "Person",
+                    "name": "Pratchaya0"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "browserRequirements": "Requires HTML5 browser with JavaScript",
+                "softwareVersion": "1.0",
+                "datePublished": "2026-07-05"
+            }
+        </script>
 
-  <!-- ====== GEO: HowTo Schema ====== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "วิธีติดตั้งและใช้งาน Onepage HTML Report",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "ติดตั้ง skill",
-        "text": "รันคำสั่ง npx skills add Pratchaya0/one-page-report ใน terminal"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": "ขอให้ AI agent สร้างรายงาน",
-        "text": "พิมพ์บอก agent เช่น 'สร้างรายงาน Q2 แบบ 1 หน้าพร้อมกราฟ'"
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "เปิดไฟล์ HTML",
-        "text": "เปิดไฟล์ reports/*.html ในเบราว์เซอร์ พร้อม Dark/Light theme"
-      }
-    ]
-  }
-  </script>
+        <!-- ====== GEO: HowTo Schema ====== -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "HowTo",
+                "name": "วิธีติดตั้งและใช้งาน Onepage HTML Report",
+                "step": [
+                    {
+                        "@type": "HowToStep",
+                        "position": 1,
+                        "name": "ติดตั้ง skill",
+                        "text": "รันคำสั่ง npx skills add Pratchaya0/one-page-report ใน terminal"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 2,
+                        "name": "ขอให้ AI agent สร้างรายงาน",
+                        "text": "พิมพ์บอก agent เช่น 'สร้างรายงาน Q2 แบบ 1 หน้าพร้อมกราฟ'"
+                    },
+                    {
+                        "@type": "HowToStep",
+                        "position": 3,
+                        "name": "เปิดไฟล์ HTML",
+                        "text": "เปิดไฟล์ reports/*.html ในเบราว์เซอร์ พร้อม Dark/Light theme"
+                    }
+                ]
+            }
+        </script>
 
-  <!-- ====== Fonts ====== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <!-- ====== Fonts ====== -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
 
-  <style>
-    :root {
-      --bg: #0a0f14;
-      --panel: #0f1519;
-      --border: #1e293b;
-      --text: #e2e8f0;
-      --muted: #475569;
-      --accent: #05AD98;
-      --positive: #05AD98;
-      --negative: #E85D6C;
-      --warning: #F5A623;
-      --info: #3B82F6;
-    }
+        <style>
+            /* Light (default) */
+            :root {
+                --bg: #fafbfc;
+                --panel: #ffffff;
+                --border: #d1d5db;
+                --text: #0f172a;
+                --muted: #64748b;
+                --accent: #048a7a;
+                --positive: #048a7a;
+                --negative: #dc2626;
+                --warning: #d97706;
+                --info: #2563eb;
+            }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+            /* Dark override */
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bg: #0a0f14;
+                    --panel: #0f1519;
+                    --border: #1e293b;
+                    --text: #e2e8f0;
+                    --muted: #475569;
+                    --accent: #05ad98;
+                    --positive: #05ad98;
+                    --negative: #e85d6c;
+                    --warning: #f5a623;
+                    --info: #3b82f6;
+                }
+            }
 
-    body {
-      font-family: 'Noto Sans Thai', 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.7;
-    }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-    .container { max-width: 1100px; margin:0 auto; padding: 24px; }
+            body {
+                font-family: "Noto Sans Thai", "Inter", system-ui, sans-serif;
+                background: var(--bg);
+                color: var(--text);
+                font-size: 16px;
+                line-height: 1.7;
+            }
 
-    /* ====== NAV ====== */
-    nav {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:16px 24px; border-bottom:1px solid var(--border);
-      position:sticky; top:0; background:var(--bg); z-index:10;
-      backdrop-filter:blur(12px);
-    }
-    .logo { font-weight:700; font-size:18px; color:var(--accent); text-decoration:none; }
-    .logo span { color:var(--text); }
-    nav a { color:var(--muted); text-decoration:none; margin-left:24px; font-size:14px; transition:color .2s; }
-    nav a:hover { color:var(--text); }
+            .container {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 24px;
+            }
 
-    /* ====== HERO ====== */
-    .hero {
-      text-align:center; padding:80px 24px 64px;
-      border-bottom:1px solid var(--border);
-    }
-    .hero-badge {
-      display:inline-block; padding:4px 14px; margin-bottom:20px;
-      border:1px solid var(--accent); border-radius:999px;
-      font-size:13px; color:var(--accent); text-transform:uppercase;
-      letter-spacing:.1em;
-    }
-    .hero h1 {
-      font-size:clamp(28px,5vw,52px); font-weight:800;
-      line-height:1.2; margin-bottom:16px;
-    }
-    .hero h1 .hl { color:var(--accent); }
-    .hero p {
-      font-size:18px; color:var(--muted); max-width:640px;
-      margin:0 auto 32px;
-    }
-    .hero-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-    .btn {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:12px 28px; border-radius:8px; font-size:15px;
-      font-weight:600; text-decoration:none; cursor:pointer;
-      transition:all .2s; border:1px solid transparent;
-    }
-    .btn-primary { background:var(--accent); color:#0a0f14; }
-    .btn-primary:hover { background:#04c4ab; }
-    .btn-outline { border-color:var(--border); color:var(--text); }
-    .btn-outline:hover { border-color:var(--accent); background:var(--panel); }
+            /* ====== NAV ====== */
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 16px 24px;
+                border-bottom: 1px solid var(--border);
+                position: sticky;
+                top: 0;
+                background: var(--bg);
+                z-index: 10;
+                backdrop-filter: blur(12px);
+            }
+            .logo {
+                font-weight: 700;
+                font-size: 18px;
+                color: var(--accent);
+                text-decoration: none;
+            }
+            .logo span {
+                color: var(--text);
+            }
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                margin-left: 24px;
+                font-size: 14px;
+                transition: color 0.2s;
+            }
+            nav a:hover {
+                color: var(--text);
+            }
 
-    /* ====== CODE BLOCK ====== */
-    .code-block {
-      background:var(--panel); border:1px solid var(--border);
-      border-radius:8px; padding:20px 24px; margin:32px auto;
-      max-width:600px; text-align:left; font-family:'IBM Plex Mono',monospace;
-      font-size:14px; overflow-x:auto;
-    }
-    .code-block .prompt { color:var(--accent); }
-    .code-block .cmd { color:var(--text); }
-    .copy-btn {
-      float:right; background:none; border:1px solid var(--border);
-      color:var(--muted); padding:4px 10px; border-radius:4px;
-      font-size:11px; cursor:pointer; transition:all .2s;
-    }
-    .copy-btn:hover { border-color:var(--accent); color:var(--text); }
+            /* ====== HERO ====== */
+            .hero {
+                text-align: center;
+                padding: 80px 24px 64px;
+                border-bottom: 1px solid var(--border);
+            }
+            .hero-badge {
+                display: inline-block;
+                padding: 4px 14px;
+                margin-bottom: 20px;
+                border: 1px solid var(--accent);
+                border-radius: 999px;
+                font-size: 13px;
+                color: var(--accent);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+            .hero h1 {
+                font-size: clamp(28px, 5vw, 52px);
+                font-weight: 800;
+                line-height: 1.2;
+                margin-bottom: 16px;
+            }
+            .hero h1 .hl {
+                color: var(--accent);
+            }
+            .hero p {
+                font-size: 18px;
+                color: var(--muted);
+                max-width: 640px;
+                margin: 0 auto 32px;
+            }
+            .hero-actions {
+                display: flex;
+                gap: 12px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 28px;
+                border-radius: 8px;
+                font-size: 15px;
+                font-weight: 600;
+                text-decoration: none;
+                cursor: pointer;
+                transition: all 0.2s;
+                border: 1px solid transparent;
+            }
+            .btn-primary {
+                background: var(--accent);
+                color: #0a0f14;
+            }
+            .btn-primary:hover {
+                background: #04c4ab;
+            }
+            .btn-outline {
+                border-color: var(--border);
+                color: var(--text);
+            }
+            .btn-outline:hover {
+                border-color: var(--accent);
+                background: var(--panel);
+            }
 
-    /* ====== SECTIONS ====== */
-    section { padding:80px 24px; border-bottom:1px solid var(--border); }
-    section h2 {
-      font-size:clamp(24px,3vw,36px); font-weight:700;
-      margin-bottom:12px; text-align:center;
-    }
-    section h2 .hl { color:var(--accent); }
-    .section-sub {
-      text-align:center; color:var(--muted); font-size:16px;
-      margin-bottom:48px; max-width:600px; margin-left:auto; margin-right:auto;
-    }
+            /* ====== CODE BLOCK ====== */
+            .code-block {
+                background: var(--panel);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 20px 24px;
+                margin: 32px auto;
+                max-width: 600px;
+                text-align: left;
+                font-family: "IBM Plex Mono", monospace;
+                font-size: 14px;
+                overflow-x: auto;
+            }
+            .code-block .prompt {
+                color: var(--accent);
+            }
+            .code-block .cmd {
+                color: var(--text);
+            }
+            .copy-btn {
+                float: right;
+                background: none;
+                border: 1px solid var(--border);
+                color: var(--muted);
+                padding: 4px 10px;
+                border-radius: 4px;
+                font-size: 11px;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+            .copy-btn:hover {
+                border-color: var(--accent);
+                color: var(--text);
+            }
 
-    /* ====== FEATURES GRID ====== */
-    .features {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-      gap:1px; background:var(--border);
-      border:1px solid var(--border); border-radius:8px; overflow:hidden;
-    }
-    .feature {
-      background:var(--panel); padding:28px 24px;
-      transition:background .2s;
-    }
-    .feature:hover { background:var(--border); }
-    .feature-icon { font-size:28px; margin-bottom:12px; }
-    .feature h3 { font-size:16px; font-weight:600; margin-bottom:8px; }
-    .feature p { font-size:14px; color:var(--muted); line-height:1.6; }
+            /* ====== SECTIONS ====== */
+            section {
+                padding: 80px 24px;
+                border-bottom: 1px solid var(--border);
+            }
+            section h2 {
+                font-size: clamp(24px, 3vw, 36px);
+                font-weight: 700;
+                margin-bottom: 12px;
+                text-align: center;
+            }
+            section h2 .hl {
+                color: var(--accent);
+            }
+            .section-sub {
+                text-align: center;
+                color: var(--muted);
+                font-size: 16px;
+                margin-bottom: 48px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
 
-    /* ====== CHART SUPPORT GRID ====== */
-    .chart-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
-      gap:1px; background:var(--border);
-      border:1px solid var(--border); border-radius:8px; overflow:hidden;
-    }
-    .chart-type {
-      background:var(--panel); padding:20px 16px; text-align:center;
-      transition:background .2s;
-    }
-    .chart-type:hover { background:var(--border); }
-    .chart-type .icon { font-size:32px; margin-bottom:8px; }
-    .chart-type .name { font-size:14px; font-weight:600; }
-    .chart-type .use { font-size:12px; color:var(--muted); }
+            /* ====== FEATURES GRID ====== */
+            .features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1px;
+                background: var(--border);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .feature {
+                background: var(--panel);
+                padding: 28px 24px;
+                transition: background 0.2s;
+            }
+            .feature:hover {
+                background: var(--border);
+            }
+            .feature-icon {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+            .feature h3 {
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+            .feature p {
+                font-size: 14px;
+                color: var(--muted);
+                line-height: 1.6;
+            }
 
-    /* ====== AGENT SUPPORT ====== */
-    .agent-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
-      gap:12px;
-    }
-    .agent-card {
-      background:var(--panel); border:1px solid var(--border);
-      border-radius:8px; padding:20px 16px; text-align:center;
-      transition:all .2s;
-    }
-    .agent-card:hover { border-color:var(--accent); }
-    .agent-card .icon { font-size:24px; margin-bottom:8px; }
-    .agent-card .name { font-size:14px; font-weight:600; }
+            /* ====== CHART SUPPORT GRID ====== */
+            .chart-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 1px;
+                background: var(--border);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .chart-type {
+                background: var(--panel);
+                padding: 20px 16px;
+                text-align: center;
+                transition: background 0.2s;
+            }
+            .chart-type:hover {
+                background: var(--border);
+            }
+            .chart-type .icon {
+                font-size: 32px;
+                margin-bottom: 8px;
+            }
+            .chart-type .name {
+                font-size: 14px;
+                font-weight: 600;
+            }
+            .chart-type .use {
+                font-size: 12px;
+                color: var(--muted);
+            }
 
-    /* ====== STEPS ====== */
-    .steps {
-      display:flex; flex-direction:column; gap:0;
-      max-width:700px; margin:0 auto;
-    }
-    .step {
-      display:flex; gap:20px; padding:24px 0;
-      border-bottom:1px solid var(--border);
-    }
-    .step:last-child { border-bottom:none; }
-    .step-num {
-      width:44px; height:44px; flex-shrink:0;
-      border:2px solid var(--accent); border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      font-size:18px; font-weight:700; color:var(--accent);
-    }
-    .step h3 { font-size:16px; font-weight:600; margin-bottom:4px; }
-    .step p { font-size:14px; color:var(--muted); }
-    .step code {
-      background:var(--panel); border:1px solid var(--border);
-      padding:2px 8px; border-radius:4px; font-size:13px;
-      font-family:'IBM Plex Mono',monospace;
-    }
+            /* ====== AGENT SUPPORT ====== */
+            .agent-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 12px;
+            }
+            .agent-card {
+                background: var(--panel);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 20px 16px;
+                text-align: center;
+                transition: all 0.2s;
+            }
+            .agent-card:hover {
+                border-color: var(--accent);
+            }
+            .agent-card .icon {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+            .agent-card .name {
+                font-size: 14px;
+                font-weight: 600;
+            }
 
-    /* ====== COMPARISON TABLE ====== */
-    .compare-table {
-      width:100%; border-collapse:collapse;
-      border:1px solid var(--border); border-radius:8px; overflow:hidden;
-      font-size:14px;
-    }
-    .compare-table th {
-      text-align:left; padding:14px 16px; background:var(--panel);
-      border-bottom:1px solid var(--border); font-weight:600;
-      font-size:13px; text-transform:uppercase; letter-spacing:.05em;
-      color:var(--muted);
-    }
-    .compare-table td {
-      padding:14px 16px; border-bottom:1px solid var(--border);
-    }
-    .compare-table tr:last-child td { border-bottom:none; }
-    .compare-table .yes { color:var(--positive); font-weight:600; }
-    .compare-table .no { color:var(--muted); }
+            /* ====== STEPS ====== */
+            .steps {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+            .step {
+                display: flex;
+                gap: 20px;
+                padding: 24px 0;
+                border-bottom: 1px solid var(--border);
+            }
+            .step:last-child {
+                border-bottom: none;
+            }
+            .step-num {
+                width: 44px;
+                height: 44px;
+                flex-shrink: 0;
+                border: 2px solid var(--accent);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                font-weight: 700;
+                color: var(--accent);
+            }
+            .step h3 {
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+            .step p {
+                font-size: 14px;
+                color: var(--muted);
+            }
+            .step code {
+                background: var(--panel);
+                border: 1px solid var(--border);
+                padding: 2px 8px;
+                border-radius: 4px;
+                font-size: 13px;
+                font-family: "IBM Plex Mono", monospace;
+            }
 
-    /* ====== CTA ====== */
-    .cta {
-      text-align:center; padding:80px 24px;
-    }
-    .cta h2 { font-size:32px; font-weight:700; margin-bottom:12px; }
-    .cta p { color:var(--muted); margin-bottom:32px; font-size:16px; }
+            /* ====== COMPARISON TABLE ====== */
+            .compare-table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                overflow: hidden;
+                font-size: 14px;
+            }
+            .compare-table th {
+                text-align: left;
+                padding: 14px 16px;
+                background: var(--panel);
+                border-bottom: 1px solid var(--border);
+                font-weight: 600;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: var(--muted);
+            }
+            .compare-table td {
+                padding: 14px 16px;
+                border-bottom: 1px solid var(--border);
+            }
+            .compare-table tr:last-child td {
+                border-bottom: none;
+            }
+            .compare-table .yes {
+                color: var(--positive);
+                font-weight: 600;
+            }
+            .compare-table .no {
+                color: var(--muted);
+            }
 
-    /* ====== FOOTER ====== */
-    footer {
-      border-top:1px solid var(--border); padding:32px 24px;
-      text-align:center; color:var(--muted); font-size:13px;
-    }
-    footer a { color:var(--accent); text-decoration:none; }
-    footer a:hover { text-decoration:underline; }
+            /* ====== CTA ====== */
+            .cta {
+                text-align: center;
+                padding: 80px 24px;
+            }
+            .cta h2 {
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 12px;
+            }
+            .cta p {
+                color: var(--muted);
+                margin-bottom: 32px;
+                font-size: 16px;
+            }
 
-    /* ====== MOBILE ====== */
-    @media (max-width: 640px) {
-      nav a { margin-left:12px; font-size:12px; }
-      .hero h1 { font-size:24px; }
-      .hero p { font-size:15px; }
-      section { padding:48px 16px; }
-    }
-  </style>
-</head>
-<body>
+            /* ====== FOOTER ====== */
+            footer {
+                border-top: 1px solid var(--border);
+                padding: 32px 24px;
+                text-align: center;
+                color: var(--muted);
+                font-size: 13px;
+            }
+            footer a {
+                color: var(--accent);
+                text-decoration: none;
+            }
+            footer a:hover {
+                text-decoration: underline;
+            }
 
-  <!-- ====== NAV ====== -->
-  <nav>
-    <a href="/" class="logo">📄 <span>Onepage</span> Report</a>
-    <div>
-      <a href="#features">Features</a>
-      <a href="#install">Install</a>
-      <a href="#agents">Agents</a>
-      <a href="https://github.com/Pratchaya0/one-page-report">GitHub</a>
-    </div>
-  </nav>
+            /* ====== MOBILE ====== */
+            @media (max-width: 640px) {
+                nav a {
+                    margin-left: 12px;
+                    font-size: 12px;
+                }
+                .hero h1 {
+                    font-size: 24px;
+                }
+                .hero p {
+                    font-size: 15px;
+                }
+                section {
+                    padding: 48px 16px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ====== NAV ====== -->
+        <nav>
+            <a href="/" class="logo">📄 <span>Onepage</span> Report</a>
+            <div>
+                <a href="#features">Features</a>
+                <a href="#install">Install</a>
+                <a href="#agents">Agents</a>
+                <a href="https://github.com/Pratchaya0/one-page-report"
+                    >GitHub</a
+                >
+            </div>
+        </nav>
 
-  <!-- ====== HERO ====== -->
-  <header class="hero">
-    <div class="hero-badge">🎯 AI Agent Skill</div>
-    <h1>
-      AI Agent สร้าง<span class="hl">รายงาน</span><br>
-      สวย กระชับ ใน<span class="hl"> 1 หน้า</span>
-    </h1>
-    <p>
-      บอก AI agent ของคุณว่า "สร้างรายงาน Q2 พร้อมกราฟ"
-      แล้วได้ไฟล์ HTML พร้อม Chart.js, Dark/Light theme, พิมพ์ได้ — ในไม่กี่วินาที
-    </p>
-    <div class="hero-actions">
-      <a href="#install" class="btn btn-primary">⚡ ติดตั้งฟรี</a>
-      <a href="https://github.com/Pratchaya0/one-page-report" class="btn btn-outline">📂 GitHub</a>
-    </div>
-    <div class="code-block">
-      <button class="copy-btn" onclick="copyCode()">📋 copy</button>
-      <span class="prompt">$</span> <span class="cmd">npx skills add Pratchaya0/one-page-report</span>
-    </div>
-  </header>
+        <!-- ====== HERO ====== -->
+        <header class="hero">
+            <div class="hero-badge">🎯 AI Agent Skill</div>
+            <h1>
+                AI Agent สร้าง<span class="hl">รายงาน</span><br />
+                สวย กระชับ ใน<span class="hl"> 1 หน้า</span>
+            </h1>
+            <p>
+                บอก AI agent ของคุณว่า "สร้างรายงาน Q2 พร้อมกราฟ" แล้วได้ไฟล์
+                HTML พร้อม Chart.js, Dark/Light theme, พิมพ์ได้ — ในไม่กี่วินาที
+            </p>
+            <div class="hero-actions">
+                <a href="#install" class="btn btn-primary">⚡ ติดตั้งฟรี</a>
+                <a
+                    href="https://github.com/Pratchaya0/one-page-report"
+                    class="btn btn-outline"
+                    >📂 GitHub</a
+                >
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode()">📋 copy</button>
+                <span class="prompt">$</span>
+                <span class="cmd"
+                    >npx skills add Pratchaya0/one-page-report</span
+                >
+            </div>
+        </header>
 
-  <!-- ====== FEATURES ====== -->
-  <section id="features">
-    <h2>ทำไมต้อง <span class="hl">Onepage</span> Report</h2>
-    <p class="section-sub">
-      ออกแบบมาเพื่อ AI coding agent โดยเฉพาะ — ไม่ใช่ template ทั่วไป
-    </p>
+        <!-- ====== FEATURES ====== -->
+        <section id="features">
+            <h2>ทำไมต้อง <span class="hl">Onepage</span> Report</h2>
+            <p class="section-sub">
+                ออกแบบมาเพื่อ AI coding agent โดยเฉพาะ — ไม่ใช่ template ทั่วไป
+            </p>
 
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">📊</div>
-        <h3>Chart-First</h3>
-        <p>ทุกรายงานต้องมีกราฟอย่างน้อย 1 อัน — Line, Bar, Doughnut, Scatter, Sparkline เลือกตามข้อมูล</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🌓</div>
-        <h3>Dark/Light Theme</h3>
-        <p>ตรวจสอบ system preference อัตโนมัติ สลับโหมดได้ด้วยคลิกเดียว CSS variables ทั้งหมด</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">✂️</div>
-        <h3>Caveman-Style</h3>
-        <p>ไม่มีข้อความฟุ่มเฟือย — "Revenue" ไม่ใช่ "Total Revenue for Q4 2026" ข้อมูลแน่นทุกพิกเซล</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">📄</div>
-        <h3>ไฟล์เดียวจบ</h3>
-        <p>HTML ไฟล์เดียว รวม CSS + Chart.js ผ่าน CDN ไม่ต้อง build, ไม่ต้อง dependencies, แชร์ได้ทันที</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🖨️</div>
-        <h3>พิมพ์สวย</h3>
-        <p>@media print styles ในตัว — พิมพ์ออกกระดาษก็สวย ไม่ต้องปรับแต่งเพิ่ม</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">💰</div>
-        <h3>ฟรี 100%</h3>
-        <p>MIT License ไม่มีค่าใช้จ่ายแอบแฝง ไม่ต้องสมัครสมาชิก ติดตั้งแล้วใช้ได้เลย</p>
-      </div>
-    </div>
-  </section>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Chart-First</h3>
+                    <p>
+                        ทุกรายงานต้องมีกราฟอย่างน้อย 1 อัน — Line, Bar,
+                        Doughnut, Scatter, Sparkline เลือกตามข้อมูล
+                    </p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌓</div>
+                    <h3>Dark/Light Theme</h3>
+                    <p>
+                        ตรวจสอบ system preference อัตโนมัติ
+                        สลับโหมดได้ด้วยคลิกเดียว CSS variables ทั้งหมด
+                    </p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✂️</div>
+                    <h3>Caveman-Style</h3>
+                    <p>
+                        ไม่มีข้อความฟุ่มเฟือย — "Revenue" ไม่ใช่ "Total Revenue
+                        for Q4 2026" ข้อมูลแน่นทุกพิกเซล
+                    </p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📄</div>
+                    <h3>ไฟล์เดียวจบ</h3>
+                    <p>
+                        HTML ไฟล์เดียว รวม CSS + Chart.js ผ่าน CDN ไม่ต้อง
+                        build, ไม่ต้อง dependencies, แชร์ได้ทันที
+                    </p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🖨️</div>
+                    <h3>พิมพ์สวย</h3>
+                    <p>
+                        @media print styles ในตัว — พิมพ์ออกกระดาษก็สวย
+                        ไม่ต้องปรับแต่งเพิ่ม
+                    </p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>ฟรี 100%</h3>
+                    <p>
+                        MIT License ไม่มีค่าใช้จ่ายแอบแฝง ไม่ต้องสมัครสมาชิก
+                        ติดตั้งแล้วใช้ได้เลย
+                    </p>
+                </div>
+            </div>
+        </section>
 
-  <!-- ====== CHART TYPES ====== -->
-  <section>
-    <h2>กราฟที่<span class="hl">รองรับ</span></h2>
-    <p class="section-sub">
-      Chart.js ทุกประเภท — AI agent เลือกชนิดกราฟที่เหมาะกับข้อมูลให้อัตโนมัติ
-    </p>
+        <!-- ====== CHART TYPES ====== -->
+        <section>
+            <h2>กราฟที่<span class="hl">รองรับ</span></h2>
+            <p class="section-sub">
+                Chart.js ทุกประเภท — AI agent
+                เลือกชนิดกราฟที่เหมาะกับข้อมูลให้อัตโนมัติ
+            </p>
 
-    <div class="chart-grid">
-      <div class="chart-type">
-        <div class="icon">📈</div>
-        <div class="name">Line</div>
-        <div class="use">แนวโน้มตามเวลา</div>
-      </div>
-      <div class="chart-type">
-        <div class="icon">📊</div>
-        <div class="name">Bar</div>
-        <div class="use">เปรียบเทียบ</div>
-      </div>
-      <div class="chart-type">
-        <div class="icon">🍩</div>
-        <div class="name">Doughnut</div>
-        <div class="use">สัดส่วน</div>
-      </div>
-      <div class="chart-type">
-        <div class="icon">📍</div>
-        <div class="name">Scatter</div>
-        <div class="use">ความสัมพันธ์</div>
-      </div>
-      <div class="chart-type">
-        <div class="icon">📉</div>
-        <div class="name">Multi-Line</div>
-        <div class="use">ซ้อนทับหลายชุด</div>
-      </div>
-      <div class="chart-type">
-        <div class="icon">⚡</div>
-        <div class="name">Sparkline</div>
-        <div class="use">mini chart</div>
-      </div>
-    </div>
-  </section>
+            <div class="chart-grid">
+                <div class="chart-type">
+                    <div class="icon">📈</div>
+                    <div class="name">Line</div>
+                    <div class="use">แนวโน้มตามเวลา</div>
+                </div>
+                <div class="chart-type">
+                    <div class="icon">📊</div>
+                    <div class="name">Bar</div>
+                    <div class="use">เปรียบเทียบ</div>
+                </div>
+                <div class="chart-type">
+                    <div class="icon">🍩</div>
+                    <div class="name">Doughnut</div>
+                    <div class="use">สัดส่วน</div>
+                </div>
+                <div class="chart-type">
+                    <div class="icon">📍</div>
+                    <div class="name">Scatter</div>
+                    <div class="use">ความสัมพันธ์</div>
+                </div>
+                <div class="chart-type">
+                    <div class="icon">📉</div>
+                    <div class="name">Multi-Line</div>
+                    <div class="use">ซ้อนทับหลายชุด</div>
+                </div>
+                <div class="chart-type">
+                    <div class="icon">⚡</div>
+                    <div class="name">Sparkline</div>
+                    <div class="use">mini chart</div>
+                </div>
+            </div>
+        </section>
 
-  <!-- ====== INSTALL ====== -->
-  <section id="install">
-    <h2>เริ่มใน <span class="hl">3 ขั้นตอน</span></h2>
-    <p class="section-sub">
-      ติดตั้งครั้งเดียว ใช้ได้ตลอด ไม่ต้อง config
-    </p>
+        <!-- ====== INSTALL ====== -->
+        <section id="install">
+            <h2>เริ่มใน <span class="hl">3 ขั้นตอน</span></h2>
+            <p class="section-sub">
+                ติดตั้งครั้งเดียว ใช้ได้ตลอด ไม่ต้อง config
+            </p>
 
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div>
-          <h3>ติดตั้ง skill</h3>
-          <p>รันคำสั่งเดียวใน terminal: <code>npx skills add Pratchaya0/one-page-report</code></p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div>
-          <h3>บอก AI agent</h3>
-          <p>พิมพ์: "สร้างรายงาน Q2 แบบ 1 หน้าพร้อมกราฟรายได้และต้นทุน"</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div>
-          <h3>เปิดไฟล์</h3>
-          <p>เปิด <code>reports/*.html</code> ในเบราว์เซอร์ — พร้อม dark/light theme, พิมพ์ได้</p>
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h3>ติดตั้ง skill</h3>
+                        <p>
+                            รันคำสั่งเดียวใน terminal:
+                            <code
+                                >npx skills add Pratchaya0/one-page-report</code
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h3>บอก AI agent</h3>
+                        <p>
+                            พิมพ์: "สร้างรายงาน Q2 แบบ 1
+                            หน้าพร้อมกราฟรายได้และต้นทุน"
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h3>เปิดไฟล์</h3>
+                        <p>
+                            เปิด <code>reports/*.html</code> ในเบราว์เซอร์ —
+                            พร้อม dark/light theme, พิมพ์ได้
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- ====== AGENTS ====== -->
-  <section id="agents">
-    <h2>รองรับ <span class="hl">30+</span> AI Agents</h2>
-    <p class="section-sub">
-      ทุก agent ที่รองรับ <code>npx skills add</code> — Claude Code, Cursor, Zed, Codex และอีกมากมาย
-    </p>
+        <!-- ====== AGENTS ====== -->
+        <section id="agents">
+            <h2>รองรับ <span class="hl">30+</span> AI Agents</h2>
+            <p class="section-sub">
+                ทุก agent ที่รองรับ <code>npx skills add</code> — Claude Code,
+                Cursor, Zed, Codex และอีกมากมาย
+            </p>
 
-    <div class="agent-grid">
-      <div class="agent-card">
-        <div class="icon">🧠</div>
-        <div class="name">Claude Code</div>
-      </div>
-      <div class="agent-card">
-        <div class="icon">🖱️</div>
-        <div class="name">Cursor</div>
-      </div>
-      <div class="agent-card">
-        <div class="icon">⚡</div>
-        <div class="name">Zed</div>
-      </div>
-      <div class="agent-card">
-        <div class="icon">🔮</div>
-        <div class="name">Codex</div>
-      </div>
-      <div class="agent-card">
-        <div class="icon">🌬️</div>
-        <div class="name">Windsurf</div>
-      </div>
-      <div class="agent-card">
-        <div class="icon">🤖</div>
-        <div class="name">Copilot</div>
-      </div>
-      <div class="agent-card">
-        <div class="icon">🔧</div>
-        <div class="name">Cline</div>
-      </div>
-      <div class="agent-card">
-        <div class="icon">💎</div>
-        <div class="name">Gemini CLI</div>
-      </div>
-    </div>
-  </section>
+            <div class="agent-grid">
+                <div class="agent-card">
+                    <div class="icon">🧠</div>
+                    <div class="name">Claude Code</div>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">🖱️</div>
+                    <div class="name">Cursor</div>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">⚡</div>
+                    <div class="name">Zed</div>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">🔮</div>
+                    <div class="name">Codex</div>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">🌬️</div>
+                    <div class="name">Windsurf</div>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">🤖</div>
+                    <div class="name">Copilot</div>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">🔧</div>
+                    <div class="name">Cline</div>
+                </div>
+                <div class="agent-card">
+                    <div class="icon">💎</div>
+                    <div class="name">Gemini CLI</div>
+                </div>
+            </div>
+        </section>
 
-  <!-- ====== COMPARISON ====== -->
-  <section>
-    <h2>เทียบกับ<span class="hl">วิธีอื่น</span></h2>
-    <p class="section-sub">
-      ทำไม Onepage Report ถึงเหมาะกับ AI agent มากกว่า
-    </p>
+        <!-- ====== COMPARISON ====== -->
+        <section>
+            <h2>เทียบกับ<span class="hl">วิธีอื่น</span></h2>
+            <p class="section-sub">
+                ทำไม Onepage Report ถึงเหมาะกับ AI agent มากกว่า
+            </p>
 
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>ความสามารถ</th>
-          <th>Onepage Report</th>
-          <th>Google Sheets</th>
-          <th>Notion</th>
-          <th>PowerPoint</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>AI Agent สร้างอัตโนมัติ</td>
-          <td class="yes">✅ ใช่</td>
-          <td class="no">❌ ไม่</td>
-          <td class="no">❌ ไม่</td>
-          <td class="no">❌ ไม่</td>
-        </tr>
-        <tr>
-          <td>กราฟโต้ตอบ (Chart.js)</td>
-          <td class="yes">✅ ใช่</td>
-          <td class="no">❌ static</td>
-          <td class="no">❌ ไม่</td>
-          <td class="no">❌ static</td>
-        </tr>
-        <tr>
-          <td>Dark/Light Theme</td>
-          <td class="yes">✅ ใช่</td>
-          <td class="no">❌ ไม่</td>
-          <td class="no">❌ ครึ่งเดียว</td>
-          <td class="no">❌ ไม่</td>
-        </tr>
-        <tr>
-          <td>Single File</td>
-          <td class="yes">✅ ไฟล์เดียว</td>
-          <td class="no">❌ Cloud only</td>
-          <td class="no">❌ Cloud only</td>
-          <td class="no">❌ .pptx</td>
-        </tr>
-        <tr>
-          <td>ฟรี</td>
-          <td class="yes">✅ ฟรี</td>
-          <td class="yes">✅ ฟรี</td>
-          <td class="yes">✅ ฟรี</td>
-          <td class="no">❌ มีค่าใช้จ่าย</td>
-        </tr>
-        <tr>
-          <td>Zero Server Cost</td>
-          <td class="yes">✅ ใช่</td>
-          <td class="no">❌ —</td>
-          <td class="no">❌ —</td>
-          <td class="no">❌ —</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>ความสามารถ</th>
+                        <th>Onepage Report</th>
+                        <th>Google Sheets</th>
+                        <th>Notion</th>
+                        <th>PowerPoint</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI Agent สร้างอัตโนมัติ</td>
+                        <td class="yes">✅ ใช่</td>
+                        <td class="no">❌ ไม่</td>
+                        <td class="no">❌ ไม่</td>
+                        <td class="no">❌ ไม่</td>
+                    </tr>
+                    <tr>
+                        <td>กราฟโต้ตอบ (Chart.js)</td>
+                        <td class="yes">✅ ใช่</td>
+                        <td class="no">❌ static</td>
+                        <td class="no">❌ ไม่</td>
+                        <td class="no">❌ static</td>
+                    </tr>
+                    <tr>
+                        <td>Dark/Light Theme</td>
+                        <td class="yes">✅ ใช่</td>
+                        <td class="no">❌ ไม่</td>
+                        <td class="no">❌ ครึ่งเดียว</td>
+                        <td class="no">❌ ไม่</td>
+                    </tr>
+                    <tr>
+                        <td>Single File</td>
+                        <td class="yes">✅ ไฟล์เดียว</td>
+                        <td class="no">❌ Cloud only</td>
+                        <td class="no">❌ Cloud only</td>
+                        <td class="no">❌ .pptx</td>
+                    </tr>
+                    <tr>
+                        <td>ฟรี</td>
+                        <td class="yes">✅ ฟรี</td>
+                        <td class="yes">✅ ฟรี</td>
+                        <td class="yes">✅ ฟรี</td>
+                        <td class="no">❌ มีค่าใช้จ่าย</td>
+                    </tr>
+                    <tr>
+                        <td>Zero Server Cost</td>
+                        <td class="yes">✅ ใช่</td>
+                        <td class="no">❌ —</td>
+                        <td class="no">❌ —</td>
+                        <td class="no">❌ —</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-  <!-- ====== CTA ====== -->
-  <section class="cta">
-    <h2>พร้อมเริ่มหรือยัง</h2>
-    <p>คำสั่งเดียว AI agent ของคุณสร้างรายงานสวยๆ ได้ทันที</p>
-    <div class="hero-actions">
-      <a href="#install" class="btn btn-primary">⚡ npx skills add Pratchaya0/one-page-report</a>
-      <a href="https://github.com/Pratchaya0/one-page-report" class="btn btn-outline">⭐ Star on GitHub</a>
-    </div>
-  </section>
+        <!-- ====== CTA ====== -->
+        <section class="cta">
+            <h2>พร้อมเริ่มหรือยัง</h2>
+            <p>คำสั่งเดียว AI agent ของคุณสร้างรายงานสวยๆ ได้ทันที</p>
+            <div class="hero-actions">
+                <a href="#install" class="btn btn-primary"
+                    >⚡ npx skills add Pratchaya0/one-page-report</a
+                >
+                <a
+                    href="https://github.com/Pratchaya0/one-page-report"
+                    class="btn btn-outline"
+                    >⭐ Star on GitHub</a
+                >
+            </div>
+        </section>
 
-  <!-- ====== FOOTER ====== -->
-  <footer>
-    <p>
-      <strong>Onepage HTML Report</strong> — AI Agent Skill for Chart-First Reports ·
-      <a href="https://github.com/Pratchaya0/one-page-report">GitHub</a> ·
-      <a href="https://github.com/Pratchaya0/one-page-report/blob/main/LICENSE">MIT</a>
-    </p>
-    <p style="margin-top:8px;">
-      Built with Chart.js · Inter & Noto Sans Thai fonts · Zero server · Zero cost
-    </p>
-  </footer>
+        <!-- ====== FOOTER ====== -->
+        <footer>
+            <p>
+                <strong>Onepage HTML Report</strong> — AI Agent Skill for
+                Chart-First Reports ·
+                <a href="https://github.com/Pratchaya0/one-page-report"
+                    >GitHub</a
+                >
+                ·
+                <a
+                    href="https://github.com/Pratchaya0/one-page-report/blob/main/LICENSE"
+                    >MIT</a
+                >
+            </p>
+            <p style="margin-top: 8px">
+                Built with Chart.js · Inter & Noto Sans Thai fonts · Zero server
+                · Zero cost
+            </p>
+        </footer>
 
-  <script>
-    function copyCode() {
-      navigator.clipboard.writeText('npx skills add Pratchaya0/one-page-report');
-      const btn = document.querySelector('.copy-btn');
-      btn.textContent = '✅ copied!';
-      setTimeout(() => btn.textContent = '📋 copy', 2000);
-    }
-  </script>
-
-</body>
+        <script>
+            function copyCode() {
+                navigator.clipboard.writeText(
+                    "npx skills add Pratchaya0/one-page-report",
+                );
+                const btn = document.querySelector(".copy-btn");
+                btn.textContent = "✅ copied!";
+                setTimeout(() => (btn.textContent = "📋 copy"), 2000);
+            }
+        </script>
+    </body>
 </html>
