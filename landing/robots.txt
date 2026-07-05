@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://one-page-report.vercel.app/sitemap.xml

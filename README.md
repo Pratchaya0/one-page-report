@@ -1,23 +1,79 @@
 # Onepage HTML Report Skill
 
-Generate concise one-page HTML reports with Chart.js charts, dark/light theming, caveman-style brevity.
+> **Chart-first. Dark/Light mode. Zero filler.**
+> Generate concise one-page HTML reports — for AI coding agents.
 
-## Install
+[![Skill](https://img.shields.io/badge/skill-onepage--html-%2305AD98)](./skills/onepage-html/SKILL.md)
+[![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+
+## 🎯 What It Does
+
+Turns your AI agent into a report generator. Ask for a dashboard, get a self-contained HTML file with:
+
+- **📊 Chart.js charts** (line, bar, doughnut, scatter, sparkline)
+- **🌓 Dark/Light theme** (auto-detects system preference)
+- **📄 Single file output** — zero dependencies beyond CDN
+- **🖨️ Print-friendly** — looks good on paper
+- **✂️ Caveman-style brevity** — data-dense, no fluff
+
+## 📸 Example Output
+
+Prompt:
+> "Generate a Q2 2026 performance review with revenue chart and cost breakdown"
+
+Agent generates → `reports/q2-2026-review.html`:
+
+| Metrics | Charts | Extras |
+|---------|--------|--------|
+| Revenue $1.2M (+12%) | 📈 Monthly revenue line chart | 🌓 Theme toggle |
+| Costs $820K (+5%) | 🍩 Cost breakdown doughnut | 🖨️ Print styles |
+| Profit $380K (+28%) | — | ⚡ Zero server cost |
+| Customers 3,420 (+8%) | — | 📦 Single file |
+
+## 🚀 Install
 
 ```bash
-npx skills add <your-github-username>/onepage
+npx skills add Pratchaya0/one-page-report
 ```
 
-## Skills
+Or specify your agent:
 
-| Skill | Description |
-|-------|-------------|
-| `onepage-html` | Generate styled one-page HTML reports. Chart-first. Dark/light mode. Zero filler. |
+```bash
+npx skills add Pratchaya0/one-page-report -a claude   # Claude Code
+npx skills add Pratchaya0/one-page-report -a cursor   # Cursor
+npx skills add Pratchaya0/one-page-report -a zed      # Zed
+npx skills add Pratchaya0/one-page-report -a codex    # OpenAI Codex
+```
 
-## Usage
+## 📂 Skills
 
-After install, ask your agent:
+| Skill | Description | Triggers |
+|-------|-------------|----------|
+| `onepage-html` | Chart-first HTML reports with dark/light theme | "generate report", "create dashboard", "visualize data", "one-page overview" |
 
-> "Generate a one-page report for Q2 metrics with revenue chart"
+## 🔧 Usage
 
-The skill auto-activates on requests for reports, dashboards, summaries, or data visualization.
+After install, just ask your agent naturally:
+
+```
+"Make a weekly metrics dashboard with trend chart"
+"Generate a system health report for last 30 days"
+"Create a one-page Q2 review with revenue vs cost chart"
+```
+
+The skill auto-activates and produces `reports/<name>-<date>.html`.
+
+## 🏗️ Architecture
+
+```
+skill loads → agent reads template.html
+           → agent builds body: header → metrics → charts → table → footer
+           → injects Chart.js scripts
+           → writes single-file HTML
+```
+
+**Zero server cost.** All rendering happens in the browser via Chart.js CDN.
+
+## 📄 License
+
+MIT — free to use, modify, and share.

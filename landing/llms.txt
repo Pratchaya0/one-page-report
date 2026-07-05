@@ -1,0 +1,31 @@
+# Onepage HTML Report
+
+## Project Summary
+Onepage HTML Report is an AI agent skill (for Claude Code, Cursor, Zed, Codex, and 30+ agents) that generates self-contained, single-page HTML reports with Chart.js charts, dark/light theming, and caveman-style brevity. Reports are chart-first, print-friendly, and require zero server infrastructure.
+
+## Key Features
+- Chart.js integration: line, bar, doughnut, scatter, multi-line, sparkline
+- Dark/Light theme: auto-detects system preference, manual toggle
+- Caveman-style brevity: data-dense labels, zero filler text
+- Single HTML file output: no build step, no dependencies beyond CDN
+- Print-friendly: @media print styles included
+- Zero server cost: all rendering client-side via Chart.js CDN
+- MIT License: free forever
+
+## Installation
+Command: npx skills add Pratchaya0/one-page-report
+Agent-specific: npx skills add Pratchaya0/one-page-report -a [claude|cursor|zed|codex|windsurf|copilot|cline|gemini]
+
+## Supported Agents
+Claude Code, Cursor, Windsurf, Cline, Zed, Codex, Copilot, Gemini CLI, and 30+ agents supporting npx skills add.
+
+## How It Works
+1. AI agent reads SKILL.md instruction + template.html
+2. Agent builds body HTML: header → metrics → chart panels → optional table → footer
+3. Agent injects Chart.js script blocks per canvas
+4. Agent replaces {{TITLE}} and {{BODY}} placeholders
+5. Writes single-file HTML to reports/<name>-<date>.html
+
+## Repository
+GitHub: https://github.com/Pratchaya0/one-page-report
+Landing: https://one-page-report.vercel.app
